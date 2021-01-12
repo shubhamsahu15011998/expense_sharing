@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
-public class expense {
+public class Expense {
     private int id;
     private String description;
     private int total_cost;
     private String payer_id;
     private ArrayList<Integer> debtorId;
 
-    public expense(int id, String description, int total_cost, String payer_id, ArrayList<Integer> debtorId) {
+    public Expense(int id, String description, int total_cost, String payer_id, ArrayList<Integer> debtorId) {
         this.id = id;
         this.description = description;
         this.total_cost = total_cost;

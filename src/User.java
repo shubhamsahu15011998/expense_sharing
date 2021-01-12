@@ -1,10 +1,10 @@
-public class user {
+public class User {
     private int id;
     private String name;
     private String phoneNumber;
     private int moneyOwe;
 
-    public user(int id, String name, String phoneNumber) {
+    public User(int id, String name, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
