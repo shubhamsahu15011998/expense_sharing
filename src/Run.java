@@ -18,11 +18,11 @@ public class Run {
                     System.out.println("To register a new user, please provide their name & phone number separated by a space");
                     String name= sc.next();
                     String phoneNumber= sc.next();
-                    if(ValidateCredential.validateData(name,phoneNumber))
-                        ;
-                    else
+                    if(ValidateCredential.validateData(name,phoneNumber)) {
+                    AddUser.addUser(name, phoneNumber);
+                    }else {
                         System.out.println("Please enter valid Name or Phone number \n\n\n\n");
-
+                    }
                     break;
                 // More to be added
                 default: break;
