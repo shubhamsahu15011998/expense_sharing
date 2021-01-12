@@ -3,15 +3,15 @@ import java.util.ArrayList;
 public class Expense {
     private int id;
     private String description;
-    private int total_cost;
-    private String payer_id;
+    private int total_cost;  // convert to double
+    private User payer;  // convert to int or use object of payer
     private ArrayList<Integer> debtorId;
 
-    public Expense(int id, String description, int total_cost, String payer_id, ArrayList<Integer> debtorId) {
+    public Expense(int id, String description, int total_cost, User payer, ArrayList<Integer> debtorId) {
         this.id = id;
         this.description = description;
         this.total_cost = total_cost;
-        this.payer_id = payer_id;
+        this.payer = payer;
         this.debtorId = debtorId;
     }
 
@@ -39,12 +39,12 @@ public class Expense {
         this.total_cost = total_cost;
     }
 
-    public String getPayer_id() {
-        return payer_id;
+    public User getPayer() {
+        return payer;
     }
 
-    public void setPayer_id(String payer_id) {
-        this.payer_id = payer_id;
+    public void setPayer_id(User payer) {
+        this.payer = payer;
     }
 
     public ArrayList<Integer> getDebtorId() {

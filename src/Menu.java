@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+// sdeparate the display from menu
 public class Menu {
 
     private int choice;
