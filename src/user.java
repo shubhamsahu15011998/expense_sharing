@@ -2,11 +2,21 @@ public class user {
     private int id;
     private String name;
     private String phoneNumber;
+    private int moneyOwe;
 
     public user(int id, String name, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
+        this.moneyOwe = 0;
+    }
+
+    public int getMoneyOwe() {
+        return moneyOwe;
+    }
+
+    public void setMoneyOwe(int moneyOwe) {
+        this.moneyOwe = moneyOwe;
     }
 
     public int getId() {
