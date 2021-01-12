@@ -12,7 +12,15 @@ public class Input {
         return phoneNumber;
     }
 
-    public void takeNamePhonenumber() {
+    public static int acceptId()
+    {
+        int id;
+        Scanner scanner = new Scanner(System.in);
+        id = scanner.nextInt();
+        return id;
+    }
+
+    public void takeNameAndPhoneNumber() {
         Scanner scanner = new Scanner(System.in);
         String input[] = scanner.nextLine().split(",");
         if (input.length != 2) {

@@ -10,11 +10,19 @@ public class DataValidator {
         return false;
     }
 
+    public static boolean validatePhoneNumber(String phoneNumber){
+        if ( phoneNumber.length() == 10 )
+            return true;
+        return false;
+    }
+
+    public static boolean validateName(String name){
+        if (!name.isEmpty()) return true;
+        return false;
+    }
     public static boolean validateUserData(String name, String phoneNumber) {
-        if (!name.isEmpty() && !phoneNumber.isEmpty())
-            if (phoneNumber.length() == 10)
-                if(!phoneNumberDuplicationCheck(phoneNumber))
-                    return true;
+        if (validateName(name) && validatePhoneNumber(phoneNumber) && !phoneNumberDuplicationCheck(phoneNumber))
+            return true;
         return false;
     }
 }

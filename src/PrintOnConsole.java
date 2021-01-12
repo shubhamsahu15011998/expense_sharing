@@ -4,10 +4,16 @@ public class PrintOnConsole {
         System.out.println(" No users have been registered to be able to edit");
     }
 
+    public static void printEnterUpdatedDetail() {
+        System.out.println(" Enter new updated name and phone number separated by comma");
+    }
     public static void editUserMessage() {
-        System.out.println(" Which registered user do you want to edit?");
+        System.out.println(" Which registered user do you want to edit? ");
     }
 
+    public static void enterId() {
+        System.out.println(" \nPlease enter his/her id ");
+    }
     public static void phoneNumberDuplicationError() {
         System.out.println("Phone number already registered");
     }
@@ -18,6 +24,9 @@ public class PrintOnConsole {
 
     public static void printSuccessfulRegister(int id) {
         System.out.println("User registered with id : "+ id + "\n\n\n\n");
+    }
+    public static void printSuccessfulUpdated(int id) {
+        System.out.println("User successfully updated with id : "+ id + "\n\n\n\n");
     }
 
     public static void printRetryMessage() {
@@ -38,7 +47,7 @@ public class PrintOnConsole {
         else {
             System.out.println("Current Registered users are: \n");
             for (User currentUser : UserAdder.registeredUsers) {
-                System.out.println(currentUser.getId()+" : "+currentUser.getName()+" , "+currentUser.getPhoneNumber());
+                System.out.println(currentUser.getId()+" : "+currentUser.getName()+", "+currentUser.getPhoneNumber());
             }
             System.out.println("\n\n\n");
         }
