@@ -1,32 +1,48 @@
 import java.util.Scanner;
 
+
 public class Run {
     public static void main(String[] args) {
-        System.out.println("Welcome to Simple Expense Sharing app.!");
-        boolean valid=true;
+        PrintOnConsole.printWelcomeMessage();
+        boolean valid = true;
         while(valid) {
-            Menu menu = new Menu();
-            menu.showMenu();
-            int option = menu.acceptChoice();
+            Menu menu = new Menu();            // Little doubt of it's positional availability
+            PrintOnConsole.printMenu(menu);
+            String option = menu.acceptChoice();
+//            Scanner sc= new Scanner(System.in);
+//            String name_= sc.nextLine();
+//            System.out.println(name_);
             switch (option)
             {
-                case 0:
+                case "0":
                     valid=false;
                     break;
-                case 1:
-                    Scanner sc= new Scanner(System.in);
-                    System.out.println("To register a new user, please provide their name & phone number separated by a space");
-                    String name= sc.next();
-                    String phoneNumber= sc.next();
+
+                case "1":
+                    PrintOnConsole.printEnterNewUserDetail();
+                    Input input = new Input();
+                    input.takeNamePhonenumber();
+                    String name = input.getName();
+                    String phoneNumber = input.getPhoneNumber();
                     if(DataValidator.validateUserData(name,phoneNumber)) {
-                        int id = AddUser.addUser(name, phoneNumber);
-                        System.out.println("User registered with id : "+ id + "\n\n\n\n");
+                        int id = UserAdder.addUser(name, phoneNumber);
+                        PrintOnConsole.printSuccessfulRegister(id);
                     }else {
-                        System.out.println("Please enter valid Name or Phone number \n\n\n\n");
+                        PrintOnConsole.printRetryMessage();
                     }
                     break;
-                case 2:
-                    ShowUsers.showRegisteredUsers();
+
+                case "2":
+                    PrintOnConsole.printRegisteredUsers();
+                    break;
+
+                case "3":
+                    if(!UserAdder.registeredUsers.isEmpty()) {
+                        PrintOnConsole.editUserMessage();
+                        PrintOnConsole.printRegisteredUsers();
+                    }else{
+                        PrintOnConsole.noUserRegisteredMessage();
+                    }
                     break;
                 // More to be added
                 default: break;

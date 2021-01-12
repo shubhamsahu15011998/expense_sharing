@@ -1,14 +1,20 @@
-public class DataValidator { // user data validator
-    public static boolean validateUserData(String name, String phoneNumber){
-        if(!name.isEmpty() && !phoneNumber.isEmpty())
-            if(phoneNumber.length()==10) {
+public class DataValidator {
 
-                for(User current : AddUser.registeredUsers) {
-                    if (current.getPhoneNumber() == phoneNumber)
-                        return false;
-                }
-                return true;
-            }
+    //public static boolean
+
+    public static boolean phoneNumberDuplicationCheck(String phoneNumber) {
+        if (UserAdder.phoneNumberSet.contains(phoneNumber)){
+            PrintOnConsole.phoneNumberDuplicationError();
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean validateUserData(String name, String phoneNumber) {
+        if (!name.isEmpty() && !phoneNumber.isEmpty())
+            if (phoneNumber.length() == 10)
+                if(!phoneNumberDuplicationCheck(phoneNumber))
+                    return true;
         return false;
     }
 }

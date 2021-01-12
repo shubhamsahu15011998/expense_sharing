@@ -1,27 +1,36 @@
 import java.util.Scanner;
-// sdeparate the display from menu
 public class Menu {
 
-    private int choice;
+    private String choice;
 
-    public void showMenu(){
-        System.out.println("Please choose your next action from the list ");
-        System.out.println("0. Enter 0 to exit ");
-        System.out.println("1. Register a new user ");
-        System.out.println("2. Display all registered users ");
-        System.out.println("3. Edit an already added user ");
-        System.out.println("4. Add a new expense ");
-        System.out.println("5. Display all added expenses ");
-        System.out.println("6. Edit an already existing expense ");
-        System.out.println("7. Delete an expense ");
-        System.out.println("8. Display debts ");
-        System.out.println("\n Enter your choice : ");
+    private String[] menuItems;
+
+    public Menu()
+    {
+        menuItems = new String[] {
+                "Please choose your next action from the list   \n",
+                "0. Enter 0 to exit   \n",
+                "1. Register a new user   \n",
+                "2. Display all registered users   \n",
+                "3. Edit an already added user   \n",
+                "4. Add a new expense   \n",
+                "5. Display all added expenses   \n",
+                "6. Edit an already existing expense   \n",
+                "7. Delete an expense   \n",
+                "8. Display debts   \n",
+                "\n Enter your choice : \n"
+        };
     }
 
-    public int acceptChoice()
+    public String[] getMenuItems() {
+        return menuItems;
+    }
+
+    public String acceptChoice()
     {
         Scanner scan = new Scanner(System.in);
-        choice = scan.nextInt();
+        choice = scan.nextLine();
+        choice.trim();
         return choice;
     }
 
