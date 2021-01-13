@@ -1,66 +1,100 @@
+import Parser.InputParser;
+import Util.PrintOnConsole;
+
+import CommandExecutor.*;
+import Parser.InputParser.*;
+import Input.AcceptFromConsole;
+
+/************************************************************************************
+Assumption :
+
+    -> User once Created never get deleted although details of user may change
+
+*************************************************************************************/
+
 public class Run {
     public static void main(String[] args) {
         PrintOnConsole.printWelcomeMessage();
-        boolean valid = true;
+        boolean commandStatus = true;
+        while(commandStatus) {
+            String input = AcceptFromConsole.readCommand();
+            commandStatus = InputParser.parser(input);
+        }
+
+        /*int i= scan.nextInt();
+        if(i!=0){
+            String input = scan.nextLine();
+            String input_1 = scan.nextLine();
+            String arr[] = input_1.split(", (?![^//[//]]*\\))");
+            for(String curr : arr)
+                System.out.println(curr);
+        }
+
+        else
         while(valid) {
-            Menu menu = new Menu();            // Little doubt of it's positional availability
-            PrintOnConsole.printMenu(menu);
-            String option = menu.acceptChoice();
-            switch (option)
-            {
-                case "0":
-                    valid=false;
+            //Menu menu = new Menu();            // Little doubt of it's positional availability
+            String command = Commands.acceptCommand();
+            String commandName = Commands.getCommandName(command);
+            switch (commandName) {
+                case "EXIT":
+                    valid = false;
                     break;
 
-                case "1":
-                    PrintOnConsole.printEnterNewUserDetail();
-                    Input input_1 = new Input();
-                    input_1.takeNameAndPhoneNumber();
-                    String name_1 = input_1.getName();
-                    String phoneNumber_1 = input_1.getPhoneNumber();
-                    if(DataValidator.validateUserData(name_1,phoneNumber_1)) {
-                        int id = UserAdder.addUser(name_1, phoneNumber_1);
-                        PrintOnConsole.printSuccessfulRegister(id);
+                case "ADD_USER":
+                    if (CommandValidator.validateAddUserCommand(command)){
+                        CommandExecuter.executeAddUserCommand(command);
                     }else {
-                        PrintOnConsole.printRetryMessage();
+                        Util.PrintOnConsole.printRetryMessage();
                     }
                     break;
 
-                case "2":
-                    PrintOnConsole.printRegisteredUsers();
+                case "DISPLAY_USER":
+                    if (CommandValidator.validateDisplayUserCommand(command)){
+                        CommandExecuter.executeDisplayUserCommand();
+                    }else {
+                        Util.PrintOnConsole.printRetryMessage();
+                    }
                     break;
 
-                case "3":
-                    if(!UserAdder.registeredUsers.isEmpty()) {
-                        PrintOnConsole.editUserMessage();
-                        PrintOnConsole.printRegisteredUsers();
-                        PrintOnConsole.enterId();
+                case "EDIT_USER":
+                    if(!repositories.repositories.UserDataRepository.UserDataRepository.registeredUsersData.isEmpty()) {
+                        Util.PrintOnConsole.editUserMessage();
+                        Util.PrintOnConsole.printRegisteredUsers();
+                        Util.PrintOnConsole.printRegisteredUsers();
+                        Util.PrintOnConsole.enterId();
                         int id = Input.acceptId();
-                        PrintOnConsole.printEnterUpdatedDetail();
+                        Util.PrintOnConsole.printEnterUpdatedDetail();
                         Input input_3 = new Input();
-                        input_3.takeNameAndPhoneNumber();
+                        input_3.acceptNameAndPhoneNumber();
                         String name_3 = input_3.getName();
                         String phoneNumber_3 = input_3.getPhoneNumber();
-                        System.out.println(UserAdder.registeredUsers.get(id-1).getPhoneNumber());
-                        if(DataValidator.validateName(name_3) && DataValidator.validatePhoneNumber(phoneNumber_3) &&
-                           ( (phoneNumber_3.equals(UserAdder.registeredUsers.get(id-1).getPhoneNumber())) || (!DataValidator.phoneNumberDuplicationCheck(phoneNumber_3)) )
+                        System.out.println(repositories.repositories.UserDataRepository.UserDataRepository.registeredUsersData.get(id-1).getPhoneNumber());
+                        if(Util.DataValidator.validateName(name_3) && Util.DataValidator.validatePhoneNumber(phoneNumber_3) &&
+                           ( (phoneNumber_3.equals(repositories.repositories.UserDataRepository.UserDataRepository.registeredUsersData.get(id-1).getPhoneNumber())) || (!Util.DataValidator.phoneNumberDuplicationCheck(phoneNumber_3)) )
                         ) {
-                            UserAdder.registeredUsers.get(id-1).setName(name_3);
-                            UserAdder.registeredUsers.get(id-1).setPhoneNumber(phoneNumber_3);
-                            PrintOnConsole.printSuccessfulUpdated(id);
+                            repositories.repositories.UserDataRepository.UserDataRepository.registeredUsersData.get(id-1).setName(name_3);
+                            repositories.repositories.UserDataRepository.UserDataRepository.registeredUsersData.get(id-1).setPhoneNumber(phoneNumber_3);
+                            Util.PrintOnConsole.printSuccessfulUpdated(id);
                         }else {
-                            PrintOnConsole.printRetryMessage();
+                            Util.PrintOnConsole.printRetryMessage();
                         }
 
                     }else{
-                        PrintOnConsole.noUserRegisteredMessage();
+                        Util.PrintOnConsole.noUserRegisteredMessage();
                     }
                     break;
-                case "4":
+                case "ADD_EXPENSE":
                     break;
-                // More to be added
+                case "DISPLAY_EXPENSE":
+                    break;
+                case "EDIT_EXPENSE":
+                    break;
+                case "DIAPLAY_DEBTS":
+                    break;
+                case "DELETE_EXPENSE":
+                    break;
+                    // More to be added
                 default: break;
-            }
-        }
+            }*/
     }
 }

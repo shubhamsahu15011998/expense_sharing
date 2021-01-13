@@ -1,17 +1,19 @@
+package Models;
+
 import java.util.ArrayList;
 
 public class Expense {
-    private int id;
+    private Integer id;
     private String description;
     private int total_cost;  // convert to double
-    private User payer;  // convert to int or use object of payer
+    private Integer payerId;  // convert to int or use object of payer
     private ArrayList<Integer> debtorId;
 
-    public Expense(int id, String description, int total_cost, User payer, ArrayList<Integer> debtorId) {
+    public Expense(int id, String description, int total_cost, Integer payerId, ArrayList<Integer> debtorId) {
         this.id = id;
         this.description = description;
         this.total_cost = total_cost;
-        this.payer = payer;
+        this.payerId = payerId;
         this.debtorId = debtorId;
     }
 
@@ -39,12 +41,12 @@ public class Expense {
         this.total_cost = total_cost;
     }
 
-    public User getPayer() {
-        return payer;
+    public Integer getPayerId() {
+        return payerId;
     }
 
     public void setPayer_id(User payer) {
-        this.payer = payer;
+        this.payerId = payerId;
     }
 
     public ArrayList<Integer> getDebtorId() {
